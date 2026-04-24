@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-paper: #FAFAF8;
+  --bg-paper-2: #F4F3EE;
+  --bg-ink: #0B0B0D;
+  --bg-ink-2: #14141A;
+  --accent-tech: #2D5BFF;
+  --accent-tech-2: #4A72FF;
+  --accent-brass: #B8935F;
+  --accent-brass-2: #9A7A4A;
+  --ink-900: #0B0B0D;
+  --ink-700: #2D2D33;
+  --ink-500: #5A5A63;
+  --ink-300: #9A9AA3;
+  --ink-100: #D6D6DC;
+  --success: #1F7A4C;
+  --warning: #B8860B;
+  --danger: #A8322B;
+  --line: rgba(11,11,13,0.08);
+  --line-strong: rgba(11,11,13,0.16);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background-color: var(--bg-paper);
+    color: var(--ink-900);
+    font-family: var(--font-inter-tight), 'Inter', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-instrument-serif), 'Times New Roman', serif;
+    letter-spacing: -0.02em;
+  }
+  h1 { font-size: clamp(56px, 6vw, 96px); letter-spacing: -0.03em; line-height: 0.95; }
+  h2 { font-size: clamp(36px, 4vw, 64px); line-height: 1.05; }
+  h3 { font-size: clamp(24px, 2vw, 36px); line-height: 1.15; }
+  h4 { font-size: clamp(20px, 1.5vw, 24px); line-height: 1.2; }
+  small, .label {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  code, .mono {
+    font-family: var(--font-jetbrains-mono), 'Fira Code', monospace;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; }
+  :focus-visible {
+    outline: 2px solid var(--accent-tech);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .section-padding { padding: 6rem 1rem; }
+  @media (min-width: 768px) { .section-padding { padding: 8rem 1.5rem; } }
+  @media (min-width: 1024px) { .section-padding { padding: 10rem 2rem; } }
+}
