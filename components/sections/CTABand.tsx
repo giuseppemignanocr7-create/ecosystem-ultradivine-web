@@ -3,17 +3,18 @@
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
 import { COMPANY } from '@/lib/constants';
+import { EditorialReveal } from '@/components/motion/EditorialReveal';
 
 export function CTABand() {
   return (
     <section className="bg-ink py-24 md:py-32" aria-label="Call to action">
       <div className="mx-auto max-w-site px-4 md:px-6 text-center">
         <Reveal>
-          <h2 className="font-serif text-white">
+          <EditorialReveal as="h2" className="font-serif text-white">
             Prenota 30 minuti.
             <br />
             <em className="text-tech not-italic">Ti mostriamo tutto.</em>
-          </h2>
+          </EditorialReveal>
           <p className="mt-6 text-lg text-ink-300 max-w-xl mx-auto">
             Demo personalizzata sui tuoi dati. Con noi, non con un commerciale.
             Tecnica, diretta, senza slide inutili.

@@ -4,6 +4,8 @@ import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CookieBanner } from '@/components/layout/CookieBanner';
+import { LenisProvider } from '@/app/providers/LenisProvider';
+import { PageTransition } from '@/components/motion/PageTransition';
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
@@ -79,10 +81,14 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen flex flex-col font-sans">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <CookieBanner />
+        <LenisProvider>
+          <Navbar />
+          <PageTransition>
+            <main className="flex-1">{children}</main>
+          </PageTransition>
+          <Footer />
+          <CookieBanner />
+        </LenisProvider>
       </body>
     </html>
   );

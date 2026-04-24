@@ -5,18 +5,20 @@ import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { PLANS } from '@/content/pricing';
 import { cn } from '@/lib/utils';
+import { SectionNumberReveal } from '@/components/motion/SectionNumberReveal';
+import { EditorialReveal } from '@/components/motion/EditorialReveal';
 
 export function PricingTeaser() {
   return (
     <section className="section-padding bg-paper-2/50" aria-label="Prezzi">
       <div className="mx-auto max-w-site px-4 md:px-6">
         <Reveal>
-          <SectionNumber number="05" label="INVESTIMENTO" />
-          <h2 className="font-serif text-ink-900 max-w-xl">
+          <SectionNumberReveal number="05" label="INVESTIMENTO" />
+          <EditorialReveal as="h2" className="font-serif text-ink-900 max-w-xl">
             Prezzi trasparenti.
             <br />
             <em className="text-tech not-italic">Calcolati sull&apos;uso reale.</em>
-          </h2>
+          </EditorialReveal>
         </Reveal>
 
         <div className="mt-16 grid md:grid-cols-3 gap-6">

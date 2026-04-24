@@ -65,4 +65,51 @@
   .section-padding { padding: 6rem 1rem; }
   @media (min-width: 768px) { .section-padding { padding: 8rem 1.5rem; } }
   @media (min-width: 1024px) { .section-padding { padding: 10rem 2rem; } }
+
+  /* Suite card hover effects */
+  .suite-card {
+    background: var(--bg-paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 28px;
+    transition:
+      transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 400ms ease,
+      box-shadow 400ms ease;
+    will-change: transform;
+  }
+
+  .suite-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-brass);
+    box-shadow: 0 20px 40px -20px rgba(184, 147, 95, 0.25);
+  }
+
+  .suite-card .suite-icon {
+    transition: transform 300ms ease;
+  }
+
+  .suite-card:hover .suite-icon {
+    transform: rotate(3deg) scale(1.05);
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .suite-card .arrow {
+    display: inline-block;
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .suite-card:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Typing animation */
+  @keyframes typing {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  .animate-typing {
+    animation: typing 1.2s ease-in-out infinite;
+  }
 }

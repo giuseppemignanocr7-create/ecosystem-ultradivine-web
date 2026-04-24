@@ -5,26 +5,31 @@ import Link from 'next/link';
 import { SUITES } from '@/content/suites';
 import { NAV_LINKS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [suiteMenuOpen, setSuiteMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  // Check for reduced motion preference
+  const prefersReducedMotion = typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 80));
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 inset-x-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-paper/80 backdrop-blur-md border-b border-line'
-          : 'bg-transparent'
-      )}
+    <motion.header
+      animate={prefersReducedMotion ? {} : {
+        paddingTop: scrolled ? 16 : 24,
+        paddingBottom: scrolled ? 16 : 24,
+        backgroundColor: scrolled ? "rgba(250, 250, 248, 0.85)" : "rgba(250, 250, 248, 0)",
+        borderBottomColor: scrolled ? "rgba(184, 147, 95, 0.3)" : "rgba(184, 147, 95, 0)"
+      }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 px-8 border-b"
+      style={{ backdropFilter: scrolled ? "blur(16px)" : "none" }}
       role="banner"
     >
       <nav
@@ -36,7 +41,12 @@ export function Navbar() {
           className="font-serif text-xl tracking-tight text-ink-900"
           aria-label="Ecosystem UltraDivine — torna alla home"
         >
-          Ecosystem <em className="text-tech">UltraDivine</em>
+          <motion.span
+            animate={prefersReducedMotion ? {} : { scale: scrolled ? 0.92 : 1 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Ecosystem <em className="text-tech">UltraDivine</em>
+          </motion.span>
         </Link>
 
         {/* Desktop nav */}
@@ -159,6 +169,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 }

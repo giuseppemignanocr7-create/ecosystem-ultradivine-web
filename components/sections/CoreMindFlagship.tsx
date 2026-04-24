@@ -3,6 +3,10 @@
 import { SectionNumber } from '@/components/ui/SectionNumber';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
+import { SectionNumberReveal } from '@/components/motion/SectionNumberReveal';
+import { EditorialReveal } from '@/components/motion/EditorialReveal';
+import { CoreMindChatAnimated } from '@/components/motion/CoreMindChatAnimated';
+import { motion } from 'motion/react';
 
 const features = [
   {
@@ -39,97 +43,44 @@ export function CoreMindFlagship() {
       aria-label="CoreMind"
     >
       {/* Glow */}
-      <div
+      <motion.div
         className="absolute top-0 left-0 w-full h-full pointer-events-none"
         style={{
           background:
             'radial-gradient(circle at 30% 50%, rgba(45,91,255,0.15), transparent 60%), radial-gradient(circle at 70% 20%, rgba(184,147,95,0.08), transparent 50%)',
         }}
+        animate={{
+          opacity: [0.5, 0.8, 0.5],
+          background: [
+            'radial-gradient(circle at 30% 50%, rgba(45,91,255,0.15), transparent 60%), radial-gradient(circle at 70% 20%, rgba(184,147,95,0.08), transparent 50%)',
+            'radial-gradient(circle at 35% 55%, rgba(45,91,255,0.2), transparent 60%), radial-gradient(circle at 65% 25%, rgba(184,147,95,0.12), transparent 50%)',
+            'radial-gradient(circle at 30% 50%, rgba(45,91,255,0.15), transparent 60%), radial-gradient(circle at 70% 20%, rgba(184,147,95,0.08), transparent 50%)'
+          ]
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
       />
 
       <div className="relative mx-auto max-w-site px-4 md:px-6">
         <Reveal>
-          <SectionNumber number="01" label="INTELLIGENCE" dark />
-          <h2 className="font-serif text-white max-w-2xl">
+          <SectionNumberReveal number="01" label="INTELLIGENCE" />
+          <EditorialReveal as="h2" className="font-serif text-white max-w-2xl">
             Un cervello.
             <br />
             Che conosce la tua azienda
             <br />
             meglio di te.
-          </h2>
+          </EditorialReveal>
         </Reveal>
 
         <div className="mt-16 grid lg:grid-cols-2 gap-16 items-start">
           {/* Chat mockup */}
           <Reveal delay={100}>
             <div className="bg-ink-2 rounded-2xl border border-white/10 p-6 max-w-md mx-auto lg:mx-0">
-              {/* User msg */}
-              <div className="flex gap-3 mb-4">
-                <div className="w-8 h-8 rounded-full bg-brass/20 flex items-center justify-center text-xs font-mono text-brass shrink-0">
-                  G
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-xs text-ink-300">Giuseppe</span>
-                    <span className="text-[10px] text-ink-500">14:32</span>
-                  </div>
-                  <p className="text-sm text-white/90 leading-relaxed">
-                    Crea l&apos;ordine fornitore per i materiali mancanti nel
-                    cantiere di Via Roma e avvisa il capocantiere.
-                  </p>
-                </div>
-              </div>
-
-              {/* CoreMind typing */}
-              <div className="flex gap-3 mb-4">
-                <div className="w-8 h-8 rounded-full bg-tech/20 flex items-center justify-center text-xs font-mono text-tech shrink-0">
-                  AI
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-xs text-tech">CoreMind</span>
-                    <span className="text-[10px] text-ink-500">14:32</span>
-                  </div>
-                  <p className="text-sm text-white/90 leading-relaxed">
-                    Fatto. Ho incrociato il computo metrico con il magazzino:
-                    mancano 40 sacchi di cemento R32.5, 12 barre Ø16 da 12m, 3
-                    fusti di additivo fluidificante. Ordine generato verso
-                    Edilizia Marra (fornitore abituale, consegna 48h) per{' '}
-                    <span className="text-brass font-medium">€2.847</span>.
-                    Notifica inviata a Carmine. Budget residuo cantiere:{" "}
-                    <span className="text-brass font-medium">€12.180</span>.
-                  </p>
-                </div>
-              </div>
-
-              {/* User msg 2 */}
-              <div className="flex gap-3 mb-4">
-                <div className="w-8 h-8 rounded-full bg-brass/20 flex items-center justify-center text-xs font-mono text-brass shrink-0">
-                  G
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-xs text-ink-300">Giuseppe</span>
-                    <span className="text-[10px] text-ink-500">14:33</span>
-                  </div>
-                  <p className="text-sm text-white/90 leading-relaxed">
-                    Quali cantieri hanno margine sotto il 10% e scadenza entro 60
-                    giorni?
-                  </p>
-                </div>
-              </div>
-
-              {/* Typing indicator */}
-              <div className="flex gap-3">
-                <div className="w-8 h-8 rounded-full bg-tech/20 flex items-center justify-center text-xs font-mono text-tech shrink-0">
-                  AI
-                </div>
-                <div className="flex items-center gap-1 py-2">
-                  <span className="w-2 h-2 bg-tech rounded-full animate-typing" />
-                  <span className="w-2 h-2 bg-tech rounded-full animate-typing" style={{ animationDelay: '0.2s' }} />
-                  <span className="w-2 h-2 bg-tech rounded-full animate-typing" style={{ animationDelay: '0.4s' }} />
-                </div>
-              </div>
+              <CoreMindChatAnimated />
             </div>
           </Reveal>
 

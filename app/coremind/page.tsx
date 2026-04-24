@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { SectionNumber } from '@/components/ui/SectionNumber';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
+import { PinnedCapabilities } from '@/components/motion/PinnedCapabilities';
 
 const capabilities = [
   { title: 'Gestione cantieri tramite voce', desc: '"Crea un SAL per il cantiere di Via Roma e invialo al committente" — CoreMind esegue.' },
@@ -153,30 +154,7 @@ export default function CoreMindPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="section-padding bg-ink" aria-label="Capabilities">
-        <div className="mx-auto max-w-site px-4 md:px-6">
-          <Reveal>
-            <SectionNumber number="02" label="CAPABILITIES" dark />
-            <h2 className="font-serif text-white max-w-xl mb-12">
-              12 use case reali
-            </h2>
-          </Reveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilities.map((cap, i) => (
-              <Reveal key={cap.title} delay={i * 50}>
-                <div className="bg-ink-2 border border-white/10 rounded-xl p-6 hover:border-tech/30 transition-colors">
-                  <h3 className="font-sans text-sm font-semibold text-white uppercase tracking-wider mb-2">
-                    {cap.title}
-                  </h3>
-                  <p className="text-sm text-ink-300 leading-relaxed">
-                    {cap.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PinnedCapabilities />
 
       {/* Playground */}
       <section id="playground" className="section-padding bg-paper" aria-label="Playground">

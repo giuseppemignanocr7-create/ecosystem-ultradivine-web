@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
+import { EditorialReveal } from '@/components/motion/EditorialReveal';
 
 export function DemoPreview() {
   return (
@@ -12,11 +13,11 @@ export function DemoPreview() {
             <p className="font-mono text-xs uppercase tracking-wider text-brass mb-4">
               NON È UN VIDEO
             </p>
-            <h2 className="font-serif text-ink-900">
+            <EditorialReveal as="h2" className="font-serif text-ink-900">
               È il prodotto vero.
               <br />
               <em className="text-tech not-italic">Che lo tocchi tu.</em>
-            </h2>
+            </EditorialReveal>
             <p className="mt-6 text-lg text-ink-700 max-w-xl mx-auto">
               Accedi alla sandbox interattiva. Quattro suite in versione demo,
               dati finti ma funzioni reali. CoreMind attivo. Cinque minuti e

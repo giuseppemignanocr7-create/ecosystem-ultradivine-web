@@ -5,6 +5,8 @@ import { SectionNumber } from '@/components/ui/SectionNumber';
 import { Reveal } from '@/components/ui/Reveal';
 import { FAQS } from '@/content/faq';
 import { cn } from '@/lib/utils';
+import { SectionNumberReveal } from '@/components/motion/SectionNumberReveal';
+import { EditorialReveal } from '@/components/motion/EditorialReveal';
 
 export function FAQ() {
   const [open, setOpen] = useState<string | null>(null);
@@ -13,10 +15,10 @@ export function FAQ() {
     <section className="section-padding" aria-label="Domande frequenti">
       <div className="mx-auto max-w-site px-4 md:px-6">
         <Reveal>
-          <SectionNumber number="06" label="DOMANDE FREQUENTI" />
-          <h2 className="font-serif text-ink-900 max-w-xl">
+          <SectionNumberReveal number="06" label="DOMANDE FREQUENTI" />
+          <EditorialReveal as="h2" className="font-serif text-ink-900 max-w-xl">
             Tutto quello che devi sapere.
-          </h2>
+          </EditorialReveal>
         </Reveal>
 
         <div className="mt-12 max-w-3xl space-y-4">

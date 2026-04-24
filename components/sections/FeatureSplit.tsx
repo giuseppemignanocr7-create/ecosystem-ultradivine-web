@@ -2,6 +2,8 @@
 
 import { SectionNumber } from '@/components/ui/SectionNumber';
 import { Reveal } from '@/components/ui/Reveal';
+import { SectionNumberReveal } from '@/components/motion/SectionNumberReveal';
+import { EditorialReveal } from '@/components/motion/EditorialReveal';
 
 const steps = [
   {
@@ -29,12 +31,12 @@ export function FeatureSplit() {
     <section className="section-padding bg-paper-2/50" aria-label="Metodo">
       <div className="mx-auto max-w-site px-4 md:px-6">
         <Reveal>
-          <SectionNumber number="03" label="METODO" />
-          <h2 className="font-serif text-ink-900 max-w-xl">
+          <SectionNumberReveal number="03" label="METODO" />
+          <EditorialReveal as="h2" className="font-serif text-ink-900 max-w-xl">
             Tre passi.
             <br />
             <em className="text-tech not-italic">Per farti partire domani.</em>
-          </h2>
+          </EditorialReveal>
         </Reveal>
 
         <div className="mt-16 grid md:grid-cols-3 gap-8">

@@ -1,12 +1,13 @@
 'use client';
 
 import { Reveal } from '@/components/ui/Reveal';
+import { MetricCountUp } from '@/components/motion/MetricCountUp';
 
 const stats = [
-  { value: '€50M+', label: 'VALORE GESTITO', sub: 'IN PROGETTI' },
-  { value: '13', label: 'VERTICALI', sub: 'ATTIVI' },
-  { value: '393', label: 'TABELLE DB', sub: 'PRODUTTIVE' },
-  { value: '100%', label: 'AI-NATIVE', sub: 'BY DESIGN' },
+  { value: 50, suffix: 'M+', prefix: '€', label: 'VALORE GESTITO', sub: 'IN PROGETTI' },
+  { value: 13, suffix: '', prefix: '', label: 'VERTICALI', sub: 'ATTIVI' },
+  { value: 393, suffix: '', prefix: '', label: 'TABELLE DB', sub: 'PRODUTTIVE' },
+  { value: 100, suffix: '%', prefix: '', label: 'AI-NATIVE', sub: 'BY DESIGN' },
 ];
 
 export function TrustStrip() {
@@ -21,7 +22,12 @@ export function TrustStrip() {
                 className="text-center md:text-left relative"
               >
                 <div className="font-serif text-4xl md:text-5xl text-ink-900 tracking-tight">
-                  {stat.value}
+                  <MetricCountUp
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    prefix={stat.prefix}
+                    duration={1.2}
+                  />
                 </div>
                 <div className="mt-2 font-mono text-xs uppercase tracking-wider text-brass">
                   {stat.label}
